@@ -26,9 +26,9 @@ spring:
         serialization.indent_output: true
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
-        url: jdbc:mysql://localhost:3306/xiaobaolife?useUnicode=true&characterEncoding=utf8&useSSL=false
+        url: jdbc:mysql://203.76.208.13:3306/xiaobaolife?useUnicode=true&characterEncoding=utf8&useSSL=false
         username: root
-        password:
+        password: justdoit
         hikari:
             data-source-properties:
                 cachePrepStmts: true
