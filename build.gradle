@@ -2,6 +2,7 @@ import org.gradle.internal.os.OperatingSystem
 
 buildscript {
     repositories {
+        maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
         mavenLocal()
         jcenter()
         maven { url "http://repo.spring.io/plugins-release" }
@@ -132,6 +133,7 @@ configurations {
 }
 
 repositories {
+    maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
     mavenLocal()
     jcenter()
 }
@@ -191,6 +193,9 @@ dependencies {
     compile "io.springfox:springfox-bean-validators"
     compile "mysql:mysql-connector-java"
     compile "org.mapstruct:mapstruct-jdk8:${mapstruct_version}"
+
+    compile group: 'nz.net.ultraq.thymeleaf', name: 'thymeleaf-layout-dialect', version: '2.2.2'
+
     testCompile "com.jayway.jsonpath:json-path"
     testCompile ("org.springframework.boot:spring-boot-starter-test") {
         exclude group: 'com.vaadin.external.google', module: 'android-json'
