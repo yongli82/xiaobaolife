@@ -43,6 +43,7 @@ public class CacheConfiguration {
             cm.createCache(life.xiaobao.domain.User.class.getName() + ".authorities", jcacheConfiguration);
             cm.createCache(life.xiaobao.domain.PersistentToken.class.getName(), jcacheConfiguration);
             cm.createCache(life.xiaobao.domain.User.class.getName() + ".persistentTokens", jcacheConfiguration);
+            cm.createCache(life.xiaobao.domain.Article.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
         };
     }

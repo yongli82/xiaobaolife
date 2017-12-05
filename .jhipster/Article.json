@@ -1,0 +1,78 @@
+{
+  "relationships": [],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "uuid",
+      "javadoc": "UUID",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "title",
+      "javadoc": "标题",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "subTitle",
+      "javadoc": "小标题",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 4,
+      "fieldName": "authorName",
+      "javadoc": "作者",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 5,
+      "fieldName": "introduction",
+      "javadoc": "介绍",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 6,
+      "fieldName": "coverImageBig",
+      "javadoc": "大封面",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 7,
+      "fieldName": "coverImageSmall",
+      "javadoc": "小封面",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 8,
+      "fieldName": "content",
+      "javadoc": "内容",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 9,
+      "fieldName": "publishTime",
+      "javadoc": "发布时间",
+      "fieldType": "ZonedDateTime"
+    },
+    {
+      "fieldId": 10,
+      "fieldName": "memo",
+      "javadoc": "备注",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 11,
+      "fieldName": "recordStatus",
+      "javadoc": "状态",
+      "fieldType": "RecordStatus",
+      "fieldValues": "VALID,INVALID"
+    }
+  ],
+  "changelogDate": "20171204035204",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "javadoc": "文章",
+  "entityTableName": "article"
+}

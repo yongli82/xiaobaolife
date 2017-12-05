@@ -1,0 +1,84 @@
+<form name="editForm" role="form" novalidate (ngSubmit)="save()" #editForm="ngForm">
+
+    <div class="modal-header">
+        <h4 class="modal-title" id="myArticleLabel" jhiTranslate="xiaobaolifeApp.article.home.createOrEditLabel">Create or edit a Article</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"
+                (click)="clear()">&times;</button>
+    </div>
+    <div class="modal-body">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group" [hidden]="!article.id">
+            <label for="id" jhiTranslate="global.field.id">ID</label>
+            <input type="text" class="form-control" id="id" name="id"
+                   [(ngModel)]="article.id" readonly />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="xiaobaolifeApp.article.uuid" for="field_uuid">Uuid</label>
+            <input type="text" class="form-control" name="uuid" id="field_uuid"
+                [(ngModel)]="article.uuid" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="xiaobaolifeApp.article.title" for="field_title">Title</label>
+            <input type="text" class="form-control" name="title" id="field_title"
+                [(ngModel)]="article.title" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="xiaobaolifeApp.article.subTitle" for="field_subTitle">Sub Title</label>
+            <input type="text" class="form-control" name="subTitle" id="field_subTitle"
+                [(ngModel)]="article.subTitle" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="xiaobaolifeApp.article.authorName" for="field_authorName">Author Name</label>
+            <input type="text" class="form-control" name="authorName" id="field_authorName"
+                [(ngModel)]="article.authorName" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="xiaobaolifeApp.article.introduction" for="field_introduction">Introduction</label>
+            <input type="text" class="form-control" name="introduction" id="field_introduction"
+                [(ngModel)]="article.introduction" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="xiaobaolifeApp.article.coverImageBig" for="field_coverImageBig">Cover Image Big</label>
+            <input type="text" class="form-control" name="coverImageBig" id="field_coverImageBig"
+                [(ngModel)]="article.coverImageBig" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="xiaobaolifeApp.article.coverImageSmall" for="field_coverImageSmall">Cover Image Small</label>
+            <input type="text" class="form-control" name="coverImageSmall" id="field_coverImageSmall"
+                [(ngModel)]="article.coverImageSmall" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="xiaobaolifeApp.article.content" for="field_content">Content</label>
+            <input type="text" class="form-control" name="content" id="field_content"
+                [(ngModel)]="article.content" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="xiaobaolifeApp.article.publishTime" for="field_publishTime">Publish Time</label>
+            <div class="d-flex">
+                <input id="field_publishTime" type="datetime-local" class="form-control" name="publishTime" [(ngModel)]="article.publishTime"
+                />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="xiaobaolifeApp.article.memo" for="field_memo">Memo</label>
+            <input type="text" class="form-control" name="memo" id="field_memo"
+                [(ngModel)]="article.memo" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="xiaobaolifeApp.article.recordStatus" for="field_recordStatus">Record Status</label>
+            <select class="form-control" name="recordStatus" [(ngModel)]="article.recordStatus" id="field_recordStatus" >
+                <option value="VALID">{{'xiaobaolifeApp.RecordStatus.VALID' | translate}}</option>
+                <option value="INVALID">{{'xiaobaolifeApp.RecordStatus.INVALID' | translate}}</option>
+            </select>
+        </div>
+
+    </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clear()">
+            <span class="fa fa-ban"></span>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+        </button>
+        <button type="submit" [disabled]="editForm.form.invalid || isSaving" class="btn btn-primary">
+            <span class="fa fa-save"></span>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </button>
+    </div>
+</form>

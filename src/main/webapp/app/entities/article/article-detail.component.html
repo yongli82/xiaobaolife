@@ -1,0 +1,65 @@
+
+<div *ngIf="article">
+    <h2><span jhiTranslate="xiaobaolifeApp.article.detail.title">Article</span> {{article.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="xiaobaolifeApp.article.uuid">Uuid</span></dt>
+        <dd>
+            <span>{{article.uuid}}</span>
+        </dd>
+        <dt><span jhiTranslate="xiaobaolifeApp.article.title">Title</span></dt>
+        <dd>
+            <span>{{article.title}}</span>
+        </dd>
+        <dt><span jhiTranslate="xiaobaolifeApp.article.subTitle">Sub Title</span></dt>
+        <dd>
+            <span>{{article.subTitle}}</span>
+        </dd>
+        <dt><span jhiTranslate="xiaobaolifeApp.article.authorName">Author Name</span></dt>
+        <dd>
+            <span>{{article.authorName}}</span>
+        </dd>
+        <dt><span jhiTranslate="xiaobaolifeApp.article.introduction">Introduction</span></dt>
+        <dd>
+            <span>{{article.introduction}}</span>
+        </dd>
+        <dt><span jhiTranslate="xiaobaolifeApp.article.coverImageBig">Cover Image Big</span></dt>
+        <dd>
+            <span>{{article.coverImageBig}}</span>
+        </dd>
+        <dt><span jhiTranslate="xiaobaolifeApp.article.coverImageSmall">Cover Image Small</span></dt>
+        <dd>
+            <span>{{article.coverImageSmall}}</span>
+        </dd>
+        <dt><span jhiTranslate="xiaobaolifeApp.article.content">Content</span></dt>
+        <dd>
+            <span>{{article.content}}</span>
+        </dd>
+        <dt><span jhiTranslate="xiaobaolifeApp.article.publishTime">Publish Time</span></dt>
+        <dd>
+            <span>{{article.publishTime | date:'medium'}}</span>
+        </dd>
+        <dt><span jhiTranslate="xiaobaolifeApp.article.memo">Memo</span></dt>
+        <dd>
+            <span>{{article.memo}}</span>
+        </dd>
+        <dt><span jhiTranslate="xiaobaolifeApp.article.recordStatus">Record Status</span></dt>
+        <dd>
+            <span jhiTranslate="{{'xiaobaolifeApp.RecordStatus.' + article.recordStatus}}">{{article.recordStatus}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'article/'+ article.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

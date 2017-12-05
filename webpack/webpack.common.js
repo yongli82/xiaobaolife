@@ -96,7 +96,9 @@ module.exports = (options) => {
                 { from: './src/main/webapp/manifest.webapp', to: 'manifest.webapp' },
                 // { from: './src/main/webapp/sw.js', to: 'sw.js' },
                 // jhipster-needle-add-assets-to-webpack - JHipster will add/remove third-party resources in this array
-                { from: './src/main/webapp/robots.txt', to: 'robots.txt' }
+                { from: './src/main/webapp/robots.txt', to: 'robots.txt' },
+                { from: './src/main/webapp/WEB-INF', to: 'WEB-INF' },
+                { from: './src/main/webapp/main.html', to: 'main.html' }
             ]),
             new webpack.ProvidePlugin({
                 $: "jquery",

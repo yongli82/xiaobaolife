@@ -1,0 +1,76 @@
+<div>
+    <h2>
+        <span jhiTranslate="xiaobaolifeApp.article.home.title">Articles</span>
+        <button class="btn btn-primary float-right jh-create-entity create-article" [routerLink]="['/', { outlets: { popup: ['article-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="xiaobaolifeApp.article.home.createLabel">
+            Create new Article
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="articles">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="xiaobaolifeApp.article.uuid">Uuid</span></th>
+            <th><span jhiTranslate="xiaobaolifeApp.article.title">Title</span></th>
+            <th><span jhiTranslate="xiaobaolifeApp.article.subTitle">Sub Title</span></th>
+            <th><span jhiTranslate="xiaobaolifeApp.article.authorName">Author Name</span></th>
+            <th><span jhiTranslate="xiaobaolifeApp.article.introduction">Introduction</span></th>
+            <th><span jhiTranslate="xiaobaolifeApp.article.coverImageBig">Cover Image Big</span></th>
+            <th><span jhiTranslate="xiaobaolifeApp.article.coverImageSmall">Cover Image Small</span></th>
+            <th><span jhiTranslate="xiaobaolifeApp.article.content">Content</span></th>
+            <th><span jhiTranslate="xiaobaolifeApp.article.publishTime">Publish Time</span></th>
+            <th><span jhiTranslate="xiaobaolifeApp.article.memo">Memo</span></th>
+            <th><span jhiTranslate="xiaobaolifeApp.article.recordStatus">Record Status</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let article of articles ;trackBy: trackId">
+                <td><a [routerLink]="['../article', article.id ]">{{article.id}}</a></td>
+                <td>{{article.uuid}}</td>
+                <td>{{article.title}}</td>
+                <td>{{article.subTitle}}</td>
+                <td>{{article.authorName}}</td>
+                <td>{{article.introduction}}</td>
+                <td>{{article.coverImageBig}}</td>
+                <td>{{article.coverImageSmall}}</td>
+                <td>{{article.content}}</td>
+                <td>{{article.publishTime | date:'medium'}}</td>
+                <td>{{article.memo}}</td>
+                <td jhiTranslate="{{'xiaobaolifeApp.RecordStatus.' + article.recordStatus}}">{{article.recordStatus}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../article', article.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'article/'+ article.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'article/'+ article.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,9 @@
+{
+    "xiaobaolifeApp": {
+        "RecordStatus" : {
+            "null": "",
+            "VALID": "VALID",
+            "INVALID": "INVALID"
+        }
+    }
+}

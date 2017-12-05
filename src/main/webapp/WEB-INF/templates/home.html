@@ -5,7 +5,7 @@
     <title>Messages : View</title>
 </head>
 <body>
-<h1 layout:fragment="header">最新消息</h1>
+<h1 layout:fragment="header">最新的东西</h1>
 <div layout:fragment="content" class="container">
     <section th:each="article: ${articles}">
         <h2 th:text="${article.title}">标题</h2>

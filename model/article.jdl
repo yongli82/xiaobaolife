@@ -1,0 +1,32 @@
+enum RecordStatus{
+   VALID,
+   INVALID
+}
+
+/**
+ * 文章
+ */
+entity Article {
+  /**UUID*/
+  uuid String,
+  /**标题*/
+  title String,
+  /**小标题*/
+  subTitle String,
+  /**作者*/
+  authorName String,
+  /**介绍*/
+  introduction String,
+  /**大封面*/
+  coverImageBig String,
+  /**小封面*/
+  coverImageSmall String,
+  /**内容*/
+  content String,
+  /**发布时间*/
+  publishTime ZonedDateTime,
+  /**备注*/
+  memo String,
+  /**状态*/
+  recordStatus RecordStatus
+}
