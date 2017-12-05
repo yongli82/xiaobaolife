@@ -195,6 +195,8 @@ dependencies {
     compile "org.mapstruct:mapstruct-jdk8:${mapstruct_version}"
 
     compile group: 'nz.net.ultraq.thymeleaf', name: 'thymeleaf-layout-dialect', version: '2.2.2'
+    //http://www.baeldung.com/dates-in-thymeleaf
+    compile "org.thymeleaf.extras:thymeleaf-extras-java8time:3.0.0.RELEASE"
 
     testCompile "com.jayway.jsonpath:json-path"
     testCompile ("org.springframework.boot:spring-boot-starter-test") {

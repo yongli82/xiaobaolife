@@ -1,0 +1,186 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      class="no-js" lang="en" dir="ltr">
+<head>
+    <base href="./" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>小宝生活</title>
+    <meta name="description" content="">
+    <meta name="google" value="notranslate">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#000000">
+    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="manifest" href="manifest.webapp" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+
+    <style>
+        .info {
+            margin-bottom: 14px;
+            font-size: 13px;
+        }
+
+        .author {
+            display: inline-block;
+        }
+
+        .publishTime {
+            display: inline-block;
+        }
+
+        .title {
+            font-family: -apple-system,SF UI Display,Arial,PingFang SC,Hiragino Sans GB,Microsoft YaHei,WenQuanYi Micro Hei,sans-serif;
+            margin: -7px 0 4px;
+            display: inherit;
+            font-size: 18px;
+            font-weight: 700;
+            line-height: 1.5;
+            color: #333;
+        }
+
+        .title:visited {
+            color: #969696;
+        }
+
+        .introduction {
+            margin: 0 0 8px;
+            font-size: 13px;
+            line-height: 24px;
+        }
+
+        .meta {
+            padding-right: 0!important;
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 20px;
+        }
+
+        .collection-tag {
+            display: inline-block;
+            padding: 3px 6px;
+            margin-top: -1px;
+            max-width: 200px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            line-height: 1;
+            vertical-align: middle;
+            color: #ea6f5a!important;
+            border: 1px solid #ec6149b3;
+            border-radius: 3px;
+        }
+
+        .meta a {
+            margin-right: 10px;
+            color: #b4b4b4;
+        }
+
+        .article-content {
+
+        }
+
+        .container {
+            margin-top: 20px;
+        }
+
+        .article-title {
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+<!--[if lt IE 9]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">小宝生活</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="切换">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="menu-nav-bar">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" href="#">最新知识 <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">饮食</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">健康</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">运动</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">更多</a>
+                <div class="dropdown-menu" aria-labelledby="dropdown01">
+                    <a class="dropdown-item" href="#">关于本站</a>
+                    <a class="dropdown-item" href="#">手机版</a>
+                    <a class="dropdown-item" href="#">建议</a>
+                </div>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">查询</button>
+        </form>
+    </div>
+</nav>
+
+<div class="container">
+    <h1 layout:fragment="header" class="header"></h1>
+    <div layout:fragment="content" class="content">
+        <div class="article-title">
+            <div class="title" th:text="${article.title}">
+                文章标题
+            </div>
+            <p th:text="${article.subTitle}" class="sub-title">小标题</p>
+        </div>
+        <hr/>
+        <div class="info">
+            <div class="author" th:text="${article.authorName}">作者</div>
+            <div class="publishTime" th:text="${#temporals.format(article.publishTime, 'yyyy-MM-dd HH:mm')}">2017-01-01</div>
+        </div>
+
+        <div class="introduction" th:text="${article.introduction}">
+            简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
+        </div>
+        <div class="article-content" th:text="${article.content}">
+            <p>在过去几年里我一直从事架构设计相关的工作，我发现一个有意思的现象，在企业初创阶段或者研发部门想做大做强的时候，架构师的作用相对比较明显，因为他可以根据产品的需求进行功能性与非功能性的设计，然后进行系统设计考虑如何运维、HA、扩展、减少系统之间的依赖等一系列工作，最后和研发经理们和高级工程师过架构评审，识别架构风险和技术选型。
+
+            </p><p>然而，当业务的需求发生了变化或者产品经理想做第二期时候，架构师又开始进行上一阶段的复用，开始修改接口契约文档、扩容机器等，演变成一个文档“高手”。此时架构师忽略了一点：旁边的研发经理们一直盯着看或学，当他们发现一个新的PRD（产品需求文档）过来，架构师原来就这些“套路”，此时研发经理也会做些工作了，加上有些架构师也不参与编码，久而久之，研发会觉得架构师这个角色有点不接地气，可有可无。同时，架构师对业务知识不够了解，容易被产品和研发“排挤”，此时发现架构师仅仅起到是布道传播的作用。
+
+        </p><p>导致这个现象的原因，我个人认为：
+
+        </p><p>架构：输入产品PRD、输出设计文档（架构师为产品打工，项目成功取决去产品经理能力）。
+
+        </p><p>缺少一个“钉子”（譬如：业务框架）植入到研发和业务中。
+
+        </p><p>过度重视技术而没有去思考产品收益点在什么地方。
+
+        </p><p>如何提升架构师在研发地位，个人觉得：
+
+        </p><p>首先，架构应该是和商业对齐，甚至是业务生态圈对齐。
+
+        </p><p>其次，在商业中挖掘收益点。
+
+        </p><p>最后，将这些收益点设计一个可产品化的架构。
+        </p>
+        </div>
+    </div>
+</div>
+<noscript>
+    <h1>You must enable javascript to view this page.</h1>
+</noscript>
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+</body>
+</html>

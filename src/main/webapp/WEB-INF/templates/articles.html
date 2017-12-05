@@ -14,11 +14,8 @@
     <link rel="shortcut icon" href="favicon.ico" />
     <link rel="manifest" href="manifest.webapp" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
-    <style>
-        /*.navbar {*/
-            /*background-color: #e7e7e7 !important;*/
-        /*}*/
 
+    <style>
         .note-list {
             margin: 0;
             padding: 0;
@@ -106,6 +103,10 @@
             color: #b4b4b4;
         }
 
+        .container {
+            margin-top: 100px;
+        }
+
     </style>
 </head>
 <body>
@@ -113,7 +114,7 @@
 <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
 <![endif]-->
 
-<nav class="navbar navbar-expand-md fixed-top">
+<nav class="navbar navbar-expand-md navbar-dark bg-dark fixed-top">
     <a class="navbar-brand" href="#">小宝生活</a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false" aria-label="切换">
         <span class="navbar-toggler-icon"></span>
@@ -149,18 +150,18 @@
     </div>
 </nav>
 
-<main role="main" class="container">
-    <h1 layout:fragment="header"></h1>
-    <div layout:fragment="content" class="container">
+<div class="container">
+    <h1 layout:fragment="header" class="header"></h1>
+    <div layout:fragment="content" class="content">
         <div id="list-container">
             <ul class="note-list" infinite-scroll="/index" th:each="article: ${articles}">
-                <li th:id="note-${article.uuid}" class="have-img">
+                <li th:id="${article.uuid}" class="have-img">
                     <div class="info">
                         <div class="author" th:text="${article.authorName}">作者</div>
-                        <div class="publishTime" th:text="${article.publishTime}">2017-01-01</div>
+                        <div class="publishTime" th:text="${#temporals.format(article.publishTime, 'yyyy-MM-dd HH:mm')}">2017-01-01</div>
                     </div>
                     <div class="note">
-                        <a class="title" target="_blank" href="article.html" th:href="/article/${article.uuid}" th:text="${article.title}">
+                        <a class="title" target="_blank" href="article.html" th:href="${'/article/' + article.uuid}" th:text="${article.title}">
                             文章标题
                         </a>
                         <p th:text="${article.subTitle}">小标题</p>
@@ -169,13 +170,26 @@
                 </li>
             </ul>
         </div>
+
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item"><a class="page-link" href="/articles/0" aria-label="Previous">&laquo;</a></li>
+                <li class="page-item"><a class="page-link" th:href="${'/articles/' + (pageNo + 1)}"  th:text="${pageNo + 1}">1</a></li>
+                <li class="page-item"><a class="page-link" th:href="${'/articles/' + (pageNo + 2)}"  th:text="${pageNo + 2}">2</a></li>
+                <li class="page-item"><a class="page-link" th:href="${'/articles/' + (pageNo + 3)}"  th:text="${pageNo + 3}">3</a></li>
+                <li class="page-item"><a class="page-link" th:href="${'/articles/' + (totalPage - 1)}" aria-label="Next">&raquo;</a></li>
+            </ul>
+        </nav>
     </div>
-</main>
+</div>
 <noscript>
     <h1>You must enable javascript to view this page.</h1>
 </noscript>
+
+<!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
 <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://cdn.bootcss.com/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
 </body>
 </html>
