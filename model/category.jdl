@@ -1,0 +1,48 @@
+enum RecordStatus{
+   VALID,
+   INVALID
+}
+
+/**
+ * 类别
+ */
+entity Category {
+  /**code*/
+  code String,
+  /**标题*/
+  name String,
+  /**小标题*/
+  description String,
+  /**大封面*/
+  coverImageBig String,
+  /**小封面*/
+  coverImageSmall String,
+  /**备注*/
+  memo String,
+  /**状态*/
+  recordStatus RecordStatus
+}
+
+/**
+ * 类别
+ */
+entity MarkTag {
+  /**uuid*/
+  uuid String,
+  /**标题*/
+  name String,
+  /**状态*/
+  recordStatus RecordStatus
+}
+
+entity ArticleCategory {
+    categoryCode String,
+    articleUUId String,
+    addTime ZonedDateTime
+}
+
+entity ArticleTag {
+    tagUUId String,
+    articleUUId String,
+    addTime ZonedDateTime
+}

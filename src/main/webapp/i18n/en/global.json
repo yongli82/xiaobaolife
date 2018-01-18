@@ -8,6 +8,10 @@
             "entities": {
                 "main": "Entities",
                 "article": "Article",
+                "category": "Category",
+                "markTag": "Mark Tag",
+                "articleCategory": "Article Category",
+                "articleTag": "Article Tag",
                 "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
             },
             "account": {

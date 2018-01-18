@@ -1,0 +1,25 @@
+{
+  "relationships": [],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "tagUuId",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "articleUuId",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "addTime",
+      "fieldType": "ZonedDateTime"
+    }
+  ],
+  "changelogDate": "20171205122208",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "entityTableName": "article_tag"
+}

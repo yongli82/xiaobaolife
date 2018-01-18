@@ -1,0 +1,23 @@
+{
+    "xiaobaolifeApp": {
+        "articleCategory" : {
+            "home": {
+                "title": "Article Categories",
+                "createLabel": "Create a new Article Category",
+                "createOrEditLabel": "Create or edit a Article Category"
+            },
+            "created": "A new Article Category is created with identifier {{ param }}",
+            "updated": "A Article Category is updated with identifier {{ param }}",
+            "deleted": "A Article Category is deleted with identifier {{ param }}",
+            "delete": {
+                "question": "Are you sure you want to delete Article Category {{ id }}?"
+            },
+            "detail": {
+                "title": "Article Category"
+            },
+            "categoryCode": "Category Code",
+            "articleUuId": "Article Uu Id",
+            "addTime": "Add Time"
+        }
+    }
+}

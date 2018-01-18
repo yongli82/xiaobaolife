@@ -1,0 +1,30 @@
+{
+  "relationships": [],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "uuid",
+      "javadoc": "uuid",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "name",
+      "javadoc": "标题",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "recordStatus",
+      "javadoc": "状态",
+      "fieldType": "RecordStatus",
+      "fieldValues": "VALID,INVALID"
+    }
+  ],
+  "changelogDate": "20171205122206",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "javadoc": "类别",
+  "entityTableName": "mark_tag"
+}

@@ -1,0 +1,49 @@
+
+<div *ngIf="category">
+    <h2><span jhiTranslate="xiaobaolifeApp.category.detail.title">Category</span> {{category.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="xiaobaolifeApp.category.code">Code</span></dt>
+        <dd>
+            <span>{{category.code}}</span>
+        </dd>
+        <dt><span jhiTranslate="xiaobaolifeApp.category.name">Name</span></dt>
+        <dd>
+            <span>{{category.name}}</span>
+        </dd>
+        <dt><span jhiTranslate="xiaobaolifeApp.category.description">Description</span></dt>
+        <dd>
+            <span>{{category.description}}</span>
+        </dd>
+        <dt><span jhiTranslate="xiaobaolifeApp.category.coverImageBig">Cover Image Big</span></dt>
+        <dd>
+            <span>{{category.coverImageBig}}</span>
+        </dd>
+        <dt><span jhiTranslate="xiaobaolifeApp.category.coverImageSmall">Cover Image Small</span></dt>
+        <dd>
+            <span>{{category.coverImageSmall}}</span>
+        </dd>
+        <dt><span jhiTranslate="xiaobaolifeApp.category.memo">Memo</span></dt>
+        <dd>
+            <span>{{category.memo}}</span>
+        </dd>
+        <dt><span jhiTranslate="xiaobaolifeApp.category.recordStatus">Record Status</span></dt>
+        <dd>
+            <span jhiTranslate="{{'xiaobaolifeApp.RecordStatus.' + category.recordStatus}}">{{category.recordStatus}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'category/'+ category.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>

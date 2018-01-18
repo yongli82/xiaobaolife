@@ -1,0 +1,60 @@
+<div>
+    <h2>
+        <span jhiTranslate="xiaobaolifeApp.articleCategory.home.title">Article Categories</span>
+        <button class="btn btn-primary float-right jh-create-entity create-article-category" [routerLink]="['/', { outlets: { popup: ['article-category-new'] } }]">
+            <span class="fa fa-plus"></span>
+            <span  jhiTranslate="xiaobaolifeApp.articleCategory.home.createLabel">
+            Create new Article Category
+            </span>
+        </button>
+    </h2>
+    <jhi-alert></jhi-alert>
+    <div class="row">
+    </div>
+    <br/>
+    <div class="table-responsive" *ngIf="articleCategories">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+            <th><span jhiTranslate="global.field.id">ID</span></th>
+            <th><span jhiTranslate="xiaobaolifeApp.articleCategory.categoryCode">Category Code</span></th>
+            <th><span jhiTranslate="xiaobaolifeApp.articleCategory.articleUuId">Article Uu Id</span></th>
+            <th><span jhiTranslate="xiaobaolifeApp.articleCategory.addTime">Add Time</span></th>
+            <th></th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let articleCategory of articleCategories ;trackBy: trackId">
+                <td><a [routerLink]="['../article-category', articleCategory.id ]">{{articleCategory.id}}</a></td>
+                <td>{{articleCategory.categoryCode}}</td>
+                <td>{{articleCategory.articleUuId}}</td>
+                <td>{{articleCategory.addTime | date:'medium'}}</td>
+                <td class="text-right">
+                    <div class="btn-group flex-btn-group-container">
+                        <button type="submit"
+                                [routerLink]="['../article-category', articleCategory.id ]"
+                                class="btn btn-info btn-sm">
+                            <span class="fa fa-eye"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'article-category/'+ articleCategory.id + '/edit'} }]"
+                                replaceUrl="true"
+                                class="btn btn-primary btn-sm">
+                            <span class="fa fa-pencil"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
+                        </button>
+                        <button type="submit"
+                                [routerLink]="['/', { outlets: { popup: 'article-category/'+ articleCategory.id + '/delete'} }]"
+                                replaceUrl="true"
+                                class="btn btn-danger btn-sm">
+                            <span class="fa fa-remove"></span>
+                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
+                        </button>
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

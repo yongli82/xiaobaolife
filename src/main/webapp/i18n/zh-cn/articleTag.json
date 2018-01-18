@@ -1,0 +1,23 @@
+{
+    "xiaobaolifeApp": {
+        "articleTag" : {
+            "home": {
+                "title": "Article Tags",
+                "createLabel": "创建新 Article Tag",
+                "createOrEditLabel": "创建或编辑 Article Tag"
+            },
+            "created": "Article Tag {{ param }} 创建成功",
+            "updated": "Article Tag {{ param }} 更新成功",
+            "deleted": "Article Tag {{ param }} 删除成功",
+            "delete": {
+                "question": "你确定要删除 Article Tag {{ id }} 吗？"
+            },
+            "detail": {
+                "title": "Article Tag"
+            },
+            "tagUuId": "Tag Uu Id",
+            "articleUuId": "Article Uu Id",
+            "addTime": "Add Time"
+        }
+    }
+}

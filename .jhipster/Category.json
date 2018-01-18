@@ -1,0 +1,54 @@
+{
+  "relationships": [],
+  "fields": [
+    {
+      "fieldId": 1,
+      "fieldName": "code",
+      "javadoc": "code",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 2,
+      "fieldName": "name",
+      "javadoc": "标题",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 3,
+      "fieldName": "description",
+      "javadoc": "小标题",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 4,
+      "fieldName": "coverImageBig",
+      "javadoc": "大封面",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 5,
+      "fieldName": "coverImageSmall",
+      "javadoc": "小封面",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 6,
+      "fieldName": "memo",
+      "javadoc": "备注",
+      "fieldType": "String"
+    },
+    {
+      "fieldId": 7,
+      "fieldName": "recordStatus",
+      "javadoc": "状态",
+      "fieldType": "RecordStatus",
+      "fieldValues": "VALID,INVALID"
+    }
+  ],
+  "changelogDate": "20171205122205",
+  "dto": "no",
+  "pagination": "no",
+  "service": "no",
+  "javadoc": "类别",
+  "entityTableName": "category"
+}

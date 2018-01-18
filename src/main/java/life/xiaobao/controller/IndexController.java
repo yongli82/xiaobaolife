@@ -2,7 +2,10 @@ package life.xiaobao.controller;
 
 import life.xiaobao.domain.Article;
 import life.xiaobao.repository.ArticleRepository;
+import life.xiaobao.security.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.Ordered;
+import org.springframework.core.annotation.Order;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -23,8 +26,9 @@ public class IndexController {
     private ArticleRepository articleRepository;
 
     @RequestMapping(value = "/")
-    public String index(Model model) {
-        return articleList(0, model);
+    @Order(Ordered.HIGHEST_PRECEDENCE)
+    public String index() {
+        return "redirect:/articles/0";
     }
 
     @RequestMapping(value = "/articles/{pageNo}")
@@ -52,5 +56,15 @@ public class IndexController {
     @RequestMapping(value = "/admin")
     public String management() {
         return "forward:/index.html";
+    }
+
+    /**
+     * 静态页面，调试html用
+     * @param pageName
+     * @return
+     */
+    @RequestMapping(value = "/page/{pageName}")
+    public String staticPage(@PathVariable(value = "pageName", required = false) String pageName){
+        return pageName;
     }
 }

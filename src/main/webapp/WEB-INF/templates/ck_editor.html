@@ -1,0 +1,33 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+    <meta charset="utf-8">
+    <title>CKEditor 5 - Classic editor</title>
+    <script src="https://cdn.ckeditor.com/ckeditor5/1.0.0-alpha.2/classic/ckeditor.js"></script>
+    <style>
+        #editor{
+            width:80%;
+            min-height: 600px;
+        }
+    </style>
+</head>
+<body>
+<h1 layout:fragment="header">最新的东西</h1>
+<div layout:fragment="content" class="container">
+<h1>Classic editor</h1>
+<textarea name="content" id="editor">
+        <p>This is some sample content.</p>
+    </textarea>
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#editor' ) )
+            .catch( error => {
+            console.error( error );
+        } );
+    </script>
+</div>
+
+
+</body>
+</html>

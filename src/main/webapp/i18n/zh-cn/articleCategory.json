@@ -1,0 +1,23 @@
+{
+    "xiaobaolifeApp": {
+        "articleCategory" : {
+            "home": {
+                "title": "Article Categories",
+                "createLabel": "创建新 Article Category",
+                "createOrEditLabel": "创建或编辑 Article Category"
+            },
+            "created": "Article Category {{ param }} 创建成功",
+            "updated": "Article Category {{ param }} 更新成功",
+            "deleted": "Article Category {{ param }} 删除成功",
+            "delete": {
+                "question": "你确定要删除 Article Category {{ id }} 吗？"
+            },
+            "detail": {
+                "title": "Article Category"
+            },
+            "categoryCode": "Category Code",
+            "articleUuId": "Article Uu Id",
+            "addTime": "Add Time"
+        }
+    }
+}

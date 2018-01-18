@@ -1,0 +1,33 @@
+
+<div *ngIf="articleCategory">
+    <h2><span jhiTranslate="xiaobaolifeApp.articleCategory.detail.title">Article Category</span> {{articleCategory.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span jhiTranslate="xiaobaolifeApp.articleCategory.categoryCode">Category Code</span></dt>
+        <dd>
+            <span>{{articleCategory.categoryCode}}</span>
+        </dd>
+        <dt><span jhiTranslate="xiaobaolifeApp.articleCategory.articleUuId">Article Uu Id</span></dt>
+        <dd>
+            <span>{{articleCategory.articleUuId}}</span>
+        </dd>
+        <dt><span jhiTranslate="xiaobaolifeApp.articleCategory.addTime">Add Time</span></dt>
+        <dd>
+            <span>{{articleCategory.addTime | date:'medium'}}</span>
+        </dd>
+    </dl>
+
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'article-category/'+ articleCategory.id + '/edit'} }]"
+            replaceUrl="true"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+    </button>
+</div>
