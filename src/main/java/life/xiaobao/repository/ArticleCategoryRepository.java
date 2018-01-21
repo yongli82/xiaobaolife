@@ -13,4 +13,5 @@ import org.springframework.data.jpa.repository.*;
 @Repository
 public interface ArticleCategoryRepository extends JpaRepository<ArticleCategory, Long> {
 
+    int deleteByArticleUuId(String uuid);
 }

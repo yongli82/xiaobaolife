@@ -1,16 +1,16 @@
 package life.xiaobao.repository;
 
-import life.xiaobao.domain.MarkTag;
+import life.xiaobao.domain.Tag;
 import org.springframework.stereotype.Repository;
 
 import org.springframework.data.jpa.repository.*;
 
 
 /**
- * Spring Data JPA repository for the MarkTag entity.
+ * Spring Data JPA repository for the Tag entity.
  */
 @SuppressWarnings("unused")
 @Repository
-public interface MarkTagRepository extends JpaRepository<MarkTag, Long> {
+public interface TagRepository extends JpaRepository<Tag, Long> {
 
 }

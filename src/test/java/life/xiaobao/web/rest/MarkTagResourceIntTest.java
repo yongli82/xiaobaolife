@@ -2,8 +2,8 @@ package life.xiaobao.web.rest;
 
 import life.xiaobao.XiaobaolifeApp;
 
-import life.xiaobao.domain.MarkTag;
-import life.xiaobao.repository.MarkTagRepository;
+import life.xiaobao.domain.Tag;
+import life.xiaobao.repository.TagRepository;
 import life.xiaobao.web.rest.errors.ExceptionTranslator;
 
 import org.junit.Before;
@@ -49,7 +49,7 @@ public class MarkTagResourceIntTest {
     private static final RecordStatus UPDATED_RECORD_STATUS = RecordStatus.INVALID;
 
     @Autowired
-    private MarkTagRepository markTagRepository;
+    private TagRepository markTagRepository;
 
     @Autowired
     private MappingJackson2HttpMessageConverter jacksonMessageConverter;
@@ -65,7 +65,7 @@ public class MarkTagResourceIntTest {
 
     private MockMvc restMarkTagMockMvc;
 
-    private MarkTag markTag;
+    private Tag markTag;
 
     @Before
     public void setup() {
@@ -84,8 +84,8 @@ public class MarkTagResourceIntTest {
      * This is a static method, as tests for other entities might also need it,
      * if they test an entity which requires the current entity.
      */
-    public static MarkTag createEntity(EntityManager em) {
-        MarkTag markTag = new MarkTag();
+    public static Tag createEntity(EntityManager em) {
+        Tag markTag = new Tag();
         markTag.setUuid(DEFAULT_UUID);
         markTag.setName(DEFAULT_NAME);
         markTag.setRecordStatus(DEFAULT_RECORD_STATUS);
@@ -102,16 +102,16 @@ public class MarkTagResourceIntTest {
     public void createMarkTag() throws Exception {
         int databaseSizeBeforeCreate = markTagRepository.findAll().size();
 
-        // Create the MarkTag
+        // Create the Tag
         restMarkTagMockMvc.perform(post("/api/mark-tags")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
             .content(TestUtil.convertObjectToJsonBytes(markTag)))
             .andExpect(status().isCreated());
 
-        // Validate the MarkTag in the database
-        List<MarkTag> markTagList = markTagRepository.findAll();
+        // Validate the Tag in the database
+        List<Tag> markTagList = markTagRepository.findAll();
         assertThat(markTagList).hasSize(databaseSizeBeforeCreate + 1);
-        MarkTag testMarkTag = markTagList.get(markTagList.size() - 1);
+        Tag testMarkTag = markTagList.get(markTagList.size() - 1);
         assertThat(testMarkTag.getUuid()).isEqualTo(DEFAULT_UUID);
         assertThat(testMarkTag.getName()).isEqualTo(DEFAULT_NAME);
         assertThat(testMarkTag.getRecordStatus()).isEqualTo(DEFAULT_RECORD_STATUS);
@@ -122,7 +122,7 @@ public class MarkTagResourceIntTest {
     public void createMarkTagWithExistingId() throws Exception {
         int databaseSizeBeforeCreate = markTagRepository.findAll().size();
 
-        // Create the MarkTag with an existing ID
+        // Create the Tag with an existing ID
         markTag.setId(1L);
 
         // An entity with an existing ID cannot be created, so this API call must fail
@@ -131,8 +131,8 @@ public class MarkTagResourceIntTest {
             .content(TestUtil.convertObjectToJsonBytes(markTag)))
             .andExpect(status().isBadRequest());
 
-        // Validate the MarkTag in the database
-        List<MarkTag> markTagList = markTagRepository.findAll();
+        // Validate the Tag in the database
+        List<Tag> markTagList = markTagRepository.findAll();
         assertThat(markTagList).hasSize(databaseSizeBeforeCreate);
     }
 
@@ -184,7 +184,7 @@ public class MarkTagResourceIntTest {
         int databaseSizeBeforeUpdate = markTagRepository.findAll().size();
 
         // Update the markTag
-        MarkTag updatedMarkTag = markTagRepository.findOne(markTag.getId());
+        Tag updatedMarkTag = markTagRepository.findOne(markTag.getId());
         // Disconnect from session so that the updates on updatedMarkTag are not directly saved in db
         em.detach(updatedMarkTag);
         updatedMarkTag.setUuid(UPDATED_UUID);
@@ -196,10 +196,10 @@ public class MarkTagResourceIntTest {
             .content(TestUtil.convertObjectToJsonBytes(updatedMarkTag)))
             .andExpect(status().isOk());
 
-        // Validate the MarkTag in the database
-        List<MarkTag> markTagList = markTagRepository.findAll();
+        // Validate the Tag in the database
+        List<Tag> markTagList = markTagRepository.findAll();
         assertThat(markTagList).hasSize(databaseSizeBeforeUpdate);
-        MarkTag testMarkTag = markTagList.get(markTagList.size() - 1);
+        Tag testMarkTag = markTagList.get(markTagList.size() - 1);
         assertThat(testMarkTag.getUuid()).isEqualTo(UPDATED_UUID);
         assertThat(testMarkTag.getName()).isEqualTo(UPDATED_NAME);
         assertThat(testMarkTag.getRecordStatus()).isEqualTo(UPDATED_RECORD_STATUS);
@@ -210,7 +210,7 @@ public class MarkTagResourceIntTest {
     public void updateNonExistingMarkTag() throws Exception {
         int databaseSizeBeforeUpdate = markTagRepository.findAll().size();
 
-        // Create the MarkTag
+        // Create the Tag
 
         // If the entity doesn't have an ID, it will be created instead of just being updated
         restMarkTagMockMvc.perform(put("/api/mark-tags")
@@ -218,8 +218,8 @@ public class MarkTagResourceIntTest {
             .content(TestUtil.convertObjectToJsonBytes(markTag)))
             .andExpect(status().isCreated());
 
-        // Validate the MarkTag in the database
-        List<MarkTag> markTagList = markTagRepository.findAll();
+        // Validate the Tag in the database
+        List<Tag> markTagList = markTagRepository.findAll();
         assertThat(markTagList).hasSize(databaseSizeBeforeUpdate + 1);
     }
 
@@ -236,17 +236,17 @@ public class MarkTagResourceIntTest {
             .andExpect(status().isOk());
 
         // Validate the database is empty
-        List<MarkTag> markTagList = markTagRepository.findAll();
+        List<Tag> markTagList = markTagRepository.findAll();
         assertThat(markTagList).hasSize(databaseSizeBeforeDelete - 1);
     }
 
     @Test
     @Transactional
     public void equalsVerifier() throws Exception {
-        TestUtil.equalsVerifier(MarkTag.class);
-        MarkTag markTag1 = new MarkTag();
+        TestUtil.equalsVerifier(Tag.class);
+        Tag markTag1 = new Tag();
         markTag1.setId(1L);
-        MarkTag markTag2 = new MarkTag();
+        Tag markTag2 = new Tag();
         markTag2.setId(markTag1.getId());
         assertThat(markTag1).isEqualTo(markTag2);
         markTag2.setId(2L);

@@ -19,7 +19,7 @@ import life.xiaobao.domain.enumeration.RecordStatus;
 @Entity
 @Table(name = "mark_tag")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-public class MarkTag implements Serializable {
+public class Tag implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -91,7 +91,7 @@ public class MarkTag implements Serializable {
         if (o == null || getClass() != o.getClass()) {
             return false;
         }
-        MarkTag markTag = (MarkTag) o;
+        Tag markTag = (Tag) o;
         if (markTag.getId() == null || getId() == null) {
             return false;
         }
@@ -105,7 +105,7 @@ public class MarkTag implements Serializable {
 
     @Override
     public String toString() {
-        return "MarkTag{" +
+        return "Tag{" +
             "id=" + getId() +
             ", uuid='" + getUuid() + "'" +
             ", name='" + getName() + "'" +

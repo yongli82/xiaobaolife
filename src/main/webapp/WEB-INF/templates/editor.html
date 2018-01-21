@@ -1,0 +1,40 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="sm_layout">
+<head>
+    <meta charset="utf-8">
+    <title>Editor</title>
+    <link rel="stylesheet" type="text/css" href="/static/simditor-2.3.6/styles/simditor.css" />
+
+    <script type="text/javascript" src="/static/simditor-2.3.6/scripts/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/simditor-2.3.6/scripts/module.js"></script>
+    <script type="text/javascript" src="/static/simditor-2.3.6/scripts/hotkeys.js"></script>
+    <script type="text/javascript" src="/static/simditor-2.3.6/scripts/uploader.js"></script>
+    <script type="text/javascript" src="/static/simditor-2.3.6/scripts/simditor.js"></script>
+</head>
+<body>
+<h1 layout:fragment="header"></h1>
+<div layout:fragment="content" class="container">
+    <h1>Editor</h1>
+    <textarea id="editor" name="content">
+        <p>This is some sample content.</p>
+    </textarea>
+    <script>
+        var editor = new Simditor({
+            textarea: $('#editor'),
+            //optional options
+            pasteImage: true,
+            upload:{
+                url: '/article/upload',
+                params: null,
+                fileKey: 'file',
+                connectionCount: 3,
+                leaveConfirm: 'Uploading is in progress, are you sure to leave this page?'
+            }
+        });
+    </script>
+</div>
+
+
+</body>
+</html>

@@ -2,10 +2,10 @@ package life.xiaobao.controller;
 
 import life.xiaobao.domain.Article;
 import life.xiaobao.domain.ArticleTag;
-import life.xiaobao.domain.MarkTag;
+import life.xiaobao.domain.Tag;
 import life.xiaobao.repository.ArticleRepository;
 import life.xiaobao.repository.ArticleTagRepository;
-import life.xiaobao.repository.MarkTagRepository;
+import life.xiaobao.repository.TagRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Controller;
@@ -27,7 +27,7 @@ public class MarkTagController {
     private ArticleRepository articleRepository;
 
     @Autowired
-    private MarkTagRepository markTagRepository;
+    private TagRepository markTagRepository;
 
     @Autowired
     private ArticleTagRepository articleTagRepository;
@@ -35,8 +35,8 @@ public class MarkTagController {
 
     @RequestMapping(value = "/tags")
     @ResponseBody
-    public List<MarkTag> categories() {
-        List<MarkTag> tags = markTagRepository.findAll();
+    public List<Tag> categories() {
+        List<Tag> tags = markTagRepository.findAll();
         return tags;
     }
 

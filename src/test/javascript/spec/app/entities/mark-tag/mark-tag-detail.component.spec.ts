@@ -12,7 +12,7 @@ import { MarkTag } from '../../../../../../main/webapp/app/entities/mark-tag/mar
 
 describe('Component Tests', () => {
 
-    describe('MarkTag Management Detail Component', () => {
+    describe('Tag Management Detail Component', () => {
         let comp: MarkTagDetailComponent;
         let fixture: ComponentFixture<MarkTagDetailComponent>;
         let service: MarkTagService;

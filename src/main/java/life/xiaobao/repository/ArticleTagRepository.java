@@ -13,4 +13,5 @@ import org.springframework.data.jpa.repository.*;
 @Repository
 public interface ArticleTagRepository extends JpaRepository<ArticleTag, Long> {
 
+    int deleteByArticleUuId(String uuid);
 }

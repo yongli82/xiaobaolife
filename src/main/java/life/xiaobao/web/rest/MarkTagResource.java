@@ -1,9 +1,9 @@
 package life.xiaobao.web.rest;
 
 import com.codahale.metrics.annotation.Timed;
-import life.xiaobao.domain.MarkTag;
+import life.xiaobao.domain.Tag;
 
-import life.xiaobao.repository.MarkTagRepository;
+import life.xiaobao.repository.TagRepository;
 import life.xiaobao.web.rest.errors.BadRequestAlertException;
 import life.xiaobao.web.rest.util.HeaderUtil;
 import io.github.jhipster.web.util.ResponseUtil;
@@ -19,7 +19,7 @@ import java.util.List;
 import java.util.Optional;
 
 /**
- * REST controller for managing MarkTag.
+ * REST controller for managing Tag.
  */
 @RestController
 @RequestMapping("/api")
@@ -29,9 +29,9 @@ public class MarkTagResource {
 
     private static final String ENTITY_NAME = "markTag";
 
-    private final MarkTagRepository markTagRepository;
+    private final TagRepository markTagRepository;
 
-    public MarkTagResource(MarkTagRepository markTagRepository) {
+    public MarkTagResource(TagRepository markTagRepository) {
         this.markTagRepository = markTagRepository;
     }
 
@@ -44,12 +44,12 @@ public class MarkTagResource {
      */
     @PostMapping("/mark-tags")
     @Timed
-    public ResponseEntity<MarkTag> createMarkTag(@RequestBody MarkTag markTag) throws URISyntaxException {
-        log.debug("REST request to save MarkTag : {}", markTag);
+    public ResponseEntity<Tag> createMarkTag(@RequestBody Tag markTag) throws URISyntaxException {
+        log.debug("REST request to save Tag : {}", markTag);
         if (markTag.getId() != null) {
             throw new BadRequestAlertException("A new markTag cannot already have an ID", ENTITY_NAME, "idexists");
         }
-        MarkTag result = markTagRepository.save(markTag);
+        Tag result = markTagRepository.save(markTag);
         return ResponseEntity.created(new URI("/api/mark-tags/" + result.getId()))
             .headers(HeaderUtil.createEntityCreationAlert(ENTITY_NAME, result.getId().toString()))
             .body(result);
@@ -66,12 +66,12 @@ public class MarkTagResource {
      */
     @PutMapping("/mark-tags")
     @Timed
-    public ResponseEntity<MarkTag> updateMarkTag(@RequestBody MarkTag markTag) throws URISyntaxException {
-        log.debug("REST request to update MarkTag : {}", markTag);
+    public ResponseEntity<Tag> updateMarkTag(@RequestBody Tag markTag) throws URISyntaxException {
+        log.debug("REST request to update Tag : {}", markTag);
         if (markTag.getId() == null) {
             return createMarkTag(markTag);
         }
-        MarkTag result = markTagRepository.save(markTag);
+        Tag result = markTagRepository.save(markTag);
         return ResponseEntity.ok()
             .headers(HeaderUtil.createEntityUpdateAlert(ENTITY_NAME, markTag.getId().toString()))
             .body(result);
@@ -84,7 +84,7 @@ public class MarkTagResource {
      */
     @GetMapping("/mark-tags")
     @Timed
-    public List<MarkTag> getAllMarkTags() {
+    public List<Tag> getAllMarkTags() {
         log.debug("REST request to get all MarkTags");
         return markTagRepository.findAll();
         }
@@ -97,9 +97,9 @@ public class MarkTagResource {
      */
     @GetMapping("/mark-tags/{id}")
     @Timed
-    public ResponseEntity<MarkTag> getMarkTag(@PathVariable Long id) {
-        log.debug("REST request to get MarkTag : {}", id);
-        MarkTag markTag = markTagRepository.findOne(id);
+    public ResponseEntity<Tag> getMarkTag(@PathVariable Long id) {
+        log.debug("REST request to get Tag : {}", id);
+        Tag markTag = markTagRepository.findOne(id);
         return ResponseUtil.wrapOrNotFound(Optional.ofNullable(markTag));
     }
 
@@ -112,7 +112,7 @@ public class MarkTagResource {
     @DeleteMapping("/mark-tags/{id}")
     @Timed
     public ResponseEntity<Void> deleteMarkTag(@PathVariable Long id) {
-        log.debug("REST request to delete MarkTag : {}", id);
+        log.debug("REST request to delete Tag : {}", id);
         markTagRepository.delete(id);
         return ResponseEntity.ok().headers(HeaderUtil.createEntityDeletionAlert(ENTITY_NAME, id.toString())).build();
     }

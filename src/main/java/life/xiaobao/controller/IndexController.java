@@ -2,11 +2,9 @@ package life.xiaobao.controller;
 
 import life.xiaobao.domain.Article;
 import life.xiaobao.repository.ArticleRepository;
-import life.xiaobao.security.SecurityUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.Ordered;
 import org.springframework.core.annotation.Order;
-import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -20,37 +18,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
  */
 @Controller
 public class IndexController {
-
     public static final int PAGE_SIZE = 10;
+
     @Autowired
     private ArticleRepository articleRepository;
 
     @RequestMapping(value = "/")
     @Order(Ordered.HIGHEST_PRECEDENCE)
-    public String index() {
-        return "redirect:/articles/0";
-    }
-
-    @RequestMapping(value = "/articles/{pageNo}")
-    public String articleList(@PathVariable(value = "pageNo", required = false) Integer pageNo, Model model) {
-        if (null == pageNo) {
-            pageNo = 0;
-        }
-        Pageable pageable = new PageRequest(pageNo, 10);
+    public String index(Model model) {
+        Pageable pageable = new PageRequest(1, PAGE_SIZE);
         Page<Article> page = articleRepository.findAll(pageable);
         model.addAttribute("articles", page.getContent());
         model.addAttribute("pageNo", page.getNumber());
         model.addAttribute("totalPage", page.getTotalPages());
         return "articles";
-    }
-
-    @RequestMapping(value = "/article/{uuid}")
-    public String home(@PathVariable(value = "uuid") String uuid, Model model) {
-        Article prob = new Article();
-        prob.setUuid(uuid);
-        Article article = articleRepository.findOne(Example.of(prob));
-        model.addAttribute("article", article);
-        return "article";
     }
 
     @RequestMapping(value = "/admin")
@@ -60,11 +41,12 @@ public class IndexController {
 
     /**
      * 静态页面，调试html用
+     *
      * @param pageName
      * @return
      */
     @RequestMapping(value = "/page/{pageName}")
-    public String staticPage(@PathVariable(value = "pageName", required = false) String pageName){
+    public String staticPage(@PathVariable(value = "pageName", required = false) String pageName) {
         return pageName;
     }
 }

@@ -199,6 +199,10 @@ dependencies {
     //http://www.baeldung.com/dates-in-thymeleaf
     compile "org.thymeleaf.extras:thymeleaf-extras-java8time:3.0.0.RELEASE"
 
+    compileOnly "org.projectlombok:lombok:1.16.16"
+    provided "org.projectlombok:lombok:1.16.16"
+    apt "org.projectlombok:lombok:1.16.16"
+
     testCompile "com.jayway.jsonpath:json-path"
     testCompile ("org.springframework.boot:spring-boot-starter-test") {
         exclude group: 'com.vaadin.external.google', module: 'android-json'
