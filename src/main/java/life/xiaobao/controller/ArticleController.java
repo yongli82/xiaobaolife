@@ -145,10 +145,7 @@ public class ArticleController {
             logger.debug("create dirs: [" + LOCAL_UPLOAD_DIR + "], result=" + result);
         }
 
-        LocalDateTime now = LocalDateTime.now();
-        String timestamp = now.format(DATE_FORMAT);
-
-        fileName = timestamp + "_" + fileName;
+        fileName = UUID.randomUUID().toString() + "_" + fileName;
         File localFile = new File(uploadFolder, fileName);
         try {
             file.transferTo(localFile);
