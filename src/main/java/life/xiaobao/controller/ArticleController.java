@@ -3,6 +3,7 @@ package life.xiaobao.controller;
 import life.xiaobao.bean.ArticleBean;
 import life.xiaobao.bean.UploadResponseBean;
 import life.xiaobao.domain.*;
+import life.xiaobao.domain.enumeration.RecordStatus;
 import life.xiaobao.repository.*;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
@@ -12,6 +13,7 @@ import org.springframework.data.domain.Example;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +21,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import java.io.File;
 import java.io.IOException;
-import java.time.LocalDateTime;
+import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.UUID;
@@ -71,22 +73,56 @@ public class ArticleController {
     }
 
     @RequestMapping(value = "/article/edit/{uuid}")
-    public String editor(@PathVariable(value = "uuid") String uuid, Model model) {
-        Article prob = new Article();
-        prob.setUuid(uuid);
-        Article article = articleRepository.findOne(Example.of(prob));
+    public String editor(@PathVariable(value = "uuid", required = false) String uuid, Model model) {
+        Article article = new Article();
+        if(null != uuid) {
+            Article prob = new Article();
+            prob.setUuid(uuid);
+            article = articleRepository.findOne(Example.of(prob));
+            if(null == article){
+                article = new Article();
+            }
+        }
         model.addAttribute("article", article);
+
+        List<Category> categories = categoryRepository.findAll();
+        model.addAttribute("categories", categories);
+
         return "editor";
     }
 
-    @RequestMapping(value = "/article/save")
-    public String saveArticle(@RequestBody ArticleBean articleDto, Model model) {
+    @RequestMapping(value = "/article/create")
+    public String createArticle(Model model) {
+        Article article = new Article();
+        model.addAttribute("article", article);
+
+        List<Category> categories = categoryRepository.findAll();
+        model.addAttribute("categories", categories);
+
+        Category category = new Category();
+        category.setName("默认");
+        model.addAttribute("category", category);
+
+        return "editor";
+    }
+
+    @RequestMapping(value = "/article/save",
+        method = RequestMethod.POST,
+        consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public String saveArticleForm(ArticleBean articleDto, Model model) {
+        saveOrCreateArticle(articleDto, model);
+        String uuid = articleDto.getArticle().getUuid();
+        return "redirect:/article/" + uuid;
+    }
+
+    private void saveOrCreateArticle(ArticleBean articleDto, Model model) {
         Article article = articleDto.getArticle();
         String uuid = article.getUuid();
         if (StringUtils.isBlank(uuid)) {
             uuid = UUID.randomUUID().toString();
             article.setUuid(uuid);
         }
+        article.setPublishTime(ZonedDateTime.now());
         article = articleRepository.save(article);
         model.addAttribute("article", article);
 
@@ -103,6 +139,9 @@ public class ArticleController {
             articleCategory.setCategoryCode(code);
             articleCategory.setArticleUuId(uuid);
             articleCategoryRepository.save(articleCategory);
+        }else{
+            category = new Category();
+            category.setName("默认");
         }
 
         model.addAttribute("category", category);
@@ -127,8 +166,6 @@ public class ArticleController {
         }
 
         model.addAttribute("tags", tags);
-
-        return "article";
     }
 
     private static String LOCAL_UPLOAD_DIR = "/Users/yangyongli/Spring/xiaobaolife/build/www/static/upload"; //ArticleController.class.getResource("/").getPath() + "upload";

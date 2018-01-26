@@ -75,7 +75,7 @@ public class Category implements Serializable {
     @ApiModelProperty(value = "状态")
     @Enumerated(EnumType.STRING)
     @Column(name = "record_status")
-    private RecordStatus recordStatus;
+    private RecordStatus recordStatus = RecordStatus.VALID;
 
     // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
     public Long getId() {

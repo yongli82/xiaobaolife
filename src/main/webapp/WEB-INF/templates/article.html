@@ -11,7 +11,7 @@
     <meta name="google" value="notranslate">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#000000">
-    <link rel="shortcut icon" href="favicon.ico" />
+    <link rel="shortcut icon" href="/favicon.ico" />
     <link rel="manifest" href="manifest.webapp" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
 
@@ -149,7 +149,7 @@
         <div class="introduction" th:text="${article.introduction}">
             简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介
         </div>
-        <div class="article-content" th:text="${article.content}">
+        <div class="article-content" th:utext="${article.content}">
             <p>在过去几年里我一直从事架构设计相关的工作，我发现一个有意思的现象，在企业初创阶段或者研发部门想做大做强的时候，架构师的作用相对比较明显，因为他可以根据产品的需求进行功能性与非功能性的设计，然后进行系统设计考虑如何运维、HA、扩展、减少系统之间的依赖等一系列工作，最后和研发经理们和高级工程师过架构评审，识别架构风险和技术选型。
 
             </p><p>然而，当业务的需求发生了变化或者产品经理想做第二期时候，架构师又开始进行上一阶段的复用，开始修改接口契约文档、扩容机器等，演变成一个文档“高手”。此时架构师忽略了一点：旁边的研发经理们一直盯着看或学，当他们发现一个新的PRD（产品需求文档）过来，架构师原来就这些“套路”，此时研发经理也会做些工作了，加上有些架构师也不参与编码，久而久之，研发会觉得架构师这个角色有点不接地气，可有可无。同时，架构师对业务知识不够了解，容易被产品和研发“排挤”，此时发现架构师仅仅起到是布道传播的作用。

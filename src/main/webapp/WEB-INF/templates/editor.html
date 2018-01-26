@@ -17,16 +17,17 @@
 <div layout:fragment="content" class="ui container">
     <h1>编辑文章</h1>
     <div class="ui text container">
-        <form class="ui fluid form">
+        <form class="ui fluid form" action="/article/save" method="post">
+            <input type="hidden" name="id" value="0"/>
             <div class="field">
-                标题 <input id="title" type="text" placeholder="标题" name="title"/>
+                标题 <input id="title" type="text" placeholder="标题" name="article.title" th:value="${article} != null ? ${article.title}" value="${article.title}"/>
                 <div class="ui pointing label hidden">
                     Please enter a value
                 </div>
             </div>
 
             <div class="field">
-                副标题 <input id="subTitle" type="text" placeholder="标题" name="subTitle"/>
+                副标题 <input id="subTitle" type="text" placeholder="标题" name="article.subTitle" th:value="${article} != null ? ${article.subTitle}"/>
                 <div class="ui pointing label hidden">
                     Please enter a value
                 </div>
@@ -35,13 +36,9 @@
             <div class="field">
                 类别
                 <div class="ui selection dropdown">
-                    <input type="hidden" name="gender">
-                    <i class="dropdown icon"></i>
-                    <div class="default text">Gender</div>
-                    <div class="menu">
-                        <div class="item" data-value="1">Male</div>
-                        <div class="item" data-value="0">Female</div>
-                    </div>
+                    <select id="category" name="category.name" >
+                        <option th:each="item : ${categories}" th:value="${item.name}" th:text="${item.name}" th:selected="${item} != null and ${catetory} != null and ${item.name == catetory.name} ? 'selected'"></option>
+                    </select>
                 </div>
             </div>
 
@@ -49,7 +46,7 @@
                 标签
                 <div class="ui right labeled left icon input">
                     <i class="tags icon"></i>
-                    <input type="text" placeholder="Enter tags">
+                    <input name="tags" type="text" placeholder="">
                     <a class="ui tag label">
                         Add Tag
                     </a>
@@ -57,12 +54,12 @@
             </div>
 
             <div class="field">
-            <textarea id="editor" name="content">
+            <textarea id="editor" name="article.content">
                 <p>This is some sample content.</p>
             </textarea>
             </div>
             <div class="field">
-                <button id="submit" class="ui primary button right floated">提交</button>
+                <input type="submit" id="submitBtn" class="ui primary button right floated" value="提交">提交</input>
             </div>
         </form>
     </div>
