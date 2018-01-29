@@ -1,0 +1,84 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="sm_layout">
+<head>
+    <meta charset="utf-8">
+    <title>Editor</title>
+    <link rel="stylesheet" type="text/css" href="/static/simditor-2.3.6/styles/simditor.css" />
+
+    <script type="text/javascript" src="/static/simditor-2.3.6/scripts/jquery.min.js"></script>
+    <script type="text/javascript" src="/static/simditor-2.3.6/scripts/module.js"></script>
+    <script type="text/javascript" src="/static/simditor-2.3.6/scripts/hotkeys.js"></script>
+    <script type="text/javascript" src="/static/simditor-2.3.6/scripts/uploader.js"></script>
+    <script type="text/javascript" src="/static/simditor-2.3.6/scripts/simditor.js"></script>
+</head>
+<body>
+<h1 layout:fragment="header"></h1>
+<div layout:fragment="content" class="ui container">
+    <h1>编辑文章</h1>
+    <div class="ui text container">
+        <form class="ui fluid form" action="/article/save" method="post">
+            <input type="hidden" name="id" value="0"/>
+            <div class="field">
+                标题 <input id="title" type="text" placeholder="标题" name="article.title" th:value="${article} != null ? ${article.title}" value="${article.title}"/>
+                <div class="ui pointing label hidden">
+                    Please enter a value
+                </div>
+            </div>
+
+            <div class="field">
+                副标题 <input id="subTitle" type="text" placeholder="标题" name="article.subTitle" th:value="${article} != null ? ${article.subTitle}"/>
+                <div class="ui pointing label hidden">
+                    Please enter a value
+                </div>
+            </div>
+
+            <div class="field">
+                类别
+                <div class="ui selection dropdown">
+                    <select id="category" name="category.name" >
+                        <option th:each="item : ${categories}" th:value="${item.name}" th:text="${item.name}" th:selected="${item} != null and ${catetory} != null and ${item.name == catetory.name} ? 'selected'"></option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="field">
+                标签
+                <div class="ui right labeled left icon input">
+                    <i class="tags icon"></i>
+                    <input name="tags" type="text" placeholder="">
+                    <a class="ui tag label">
+                        Add Tag
+                    </a>
+                </div>
+            </div>
+
+            <div class="field">
+            <textarea id="editor" name="article.content">
+                <p>This is some sample content.</p>
+            </textarea>
+            </div>
+            <div class="field">
+                <input type="submit" id="submitBtn" class="ui primary button right floated" value="提交">提交</input>
+            </div>
+        </form>
+    </div>
+    <script>
+        var editor = new Simditor({
+            textarea: $('#editor'),
+            //optional options
+            pasteImage: true,
+            upload:{
+                url: '/article/upload',
+                params: null,
+                fileKey: 'file',
+                connectionCount: 3,
+                leaveConfirm: 'Uploading is in progress, are you sure to leave this page?'
+            }
+        });
+    </script>
+</div>
+
+
+</body>
+</html>

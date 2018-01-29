@@ -1,0 +1,18 @@
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="layout">
+<head>
+    <title>Messages : View</title>
+</head>
+<body>
+<h1 layout:fragment="header">最新的东西</h1>
+<div layout:fragment="content" class="container">
+    <section th:each="article: ${articles}">
+        <h2 th:text="${article.title}">标题</h2>
+        <h3 th:text="${article.subTitle}">小标题</h3>
+        <p th:text="${article.authorName}">作者</p>
+        <div th:text="${article.content}">内容</div>
+    </section>
+</div>
+</body>
+</html>

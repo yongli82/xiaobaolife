@@ -1,0 +1,64 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      class="no-js" lang="en" dir="ltr">
+<head>
+    <base href="./" />
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>小宝生活</title>
+    <meta name="description" content="">
+    <meta name="google" value="notranslate">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#000000">
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="manifest" href="manifest.webapp" />
+    <link rel="stylesheet" type="text/css" href="/static/SemanticUI/semantic.css">
+    <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.js"></script>
+    <script src="/static/SemanticUI/semantic.js"></script>
+</head>
+
+<body id="body" class="basic minimal" ontouchstart="">
+<div class="ui attached stackable menu">
+    <div class="ui container">
+        <a class="item">
+            <i class="home icon"></i> Home
+        </a>
+        <a class="item">
+            <i class="grid layout icon"></i> Browse
+        </a>
+        <a class="item">
+            <i class="mail icon"></i> Messages
+        </a>
+        <div class="ui simple dropdown item">
+            More
+            <i class="dropdown icon"></i>
+            <div class="menu">
+                <a class="item"><i class="edit icon"></i> Edit Profile</a>
+                <a class="item"><i class="globe icon"></i> Choose Language</a>
+                <a class="item"><i class="settings icon"></i> Account Settings</a>
+            </div>
+        </div>
+        <div class="right item">
+            <div class="ui input"><input type="text" placeholder="Search..."></div>
+        </div>
+    </div>
+</div>
+
+<!--<div class="ui raised very padded text container segment">-->
+    <!--<h2 class="ui header">狗对于人类的角色</h2>-->
+    <!--<p>Domestic dogs inherited complex behaviors, such as bite inhibition, from their wolf ancestors, which would have been pack hunters with complex body language. These sophisticated forms of social cognition and communication may account for their trainability, playfulness, and ability to fit into human households and social situations, and these attributes have given dogs a relationship with humans that has enabled them to become one of the most successful species on the planet today.</p>-->
+    <!--<p>The dogs' value to early human hunter-gatherers led to them quickly becoming ubiquitous across world cultures. Dogs perform many roles for people, such as hunting, herding, pulling loads, protection, assisting police and military, companionship, and, more recently, aiding handicapped individuals. This impact on human society has given them the nickname "man's best friend" in the Western world. In some cultures, however, dogs are also a source of meat.</p>-->
+<!--</div>-->
+
+
+<main role="main" class="container">
+    <h1 layout:fragment="header"></h1>
+    <div layout:fragment="content"></div>
+</main>
+<noscript>
+    <h1>You must enable javascript to view this page.</h1>
+</noscript>
+
+</body>
+</html>

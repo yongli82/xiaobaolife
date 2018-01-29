@@ -1,0 +1,41 @@
+<!doctype html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/web/thymeleaf/layout"
+      layout:decorate="sm_layout">
+<head>
+    <title>Messages : View</title>
+</head>
+
+<div class="ui raised very padded text container segment">
+    <h2 class="ui header">狗对于人类的角色</h2>
+    <p>Domestic dogs inherited complex behaviors, such as bite inhibition, from their wolf ancestors, which would have been pack hunters with complex body language. These sophisticated forms of social cognition and communication may account for their trainability, playfulness, and ability to fit into human households and social situations, and these attributes have given dogs a relationship with humans that has enabled them to become one of the most successful species on the planet today.</p>
+    <p>The dogs' value to early human hunter-gatherers led to them quickly becoming ubiquitous across world cultures. Dogs perform many roles for people, such as hunting, herding, pulling loads, protection, assisting police and military, companionship, and, more recently, aiding handicapped individuals. This impact on human society has given them the nickname "man's best friend" in the Western world. In some cultures, however, dogs are also a source of meat.</p>
+</div>
+
+<body>
+<h1 layout:fragment="header" class="header"></h1>
+<div layout:fragment="content" class="content">
+    <div class="ui raised very padded text container segment"  th:each="article: ${articles}">
+        <h2 class="ui header" th:id="${article.uuid}">
+            <div class="note">
+                <a class="title" target="_blank" href="article.html" th:href="${'/article/' + article.uuid}" th:text="${article.title}">
+                    文章标题
+                </a>
+            </div>
+        </h2>
+        <div class="sub header" th:text="${article.subTitle}">小标题</div>
+        <div class="text" th:text="${article.introduction}">简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介简介</div>
+    </div>
+
+    <!--<nav aria-label="Page navigation example">-->
+    <!--<ul class="pagination">-->
+    <!--<li class="page-item"><a class="page-link" href="/articles/0" aria-label="Previous">&laquo;</a></li>-->
+    <!--<li class="page-item"><a class="page-link" th:href="${'/articles/' + (pageNo + 1)}"  th:text="${pageNo + 1}">1</a></li>-->
+    <!--<li class="page-item"><a class="page-link" th:href="${'/articles/' + (pageNo + 2)}"  th:text="${pageNo + 2}">2</a></li>-->
+    <!--<li class="page-item"><a class="page-link" th:href="${'/articles/' + (pageNo + 3)}"  th:text="${pageNo + 3}">3</a></li>-->
+    <!--<li class="page-item"><a class="page-link" th:href="${'/articles/' + (totalPage - 1)}" aria-label="Next">&raquo;</a></li>-->
+    <!--</ul>-->
+    <!--</nav>-->
+</div>
+</body>
+</html>

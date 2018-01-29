@@ -46,7 +46,7 @@ public class CacheConfiguration {
             cm.createCache(life.xiaobao.domain.User.class.getName() + ".persistentTokens", jcacheConfiguration);
             cm.createCache(life.xiaobao.domain.Article.class.getName(), jcacheConfiguration);
             cm.createCache(life.xiaobao.domain.Category.class.getName(), jcacheConfiguration);
-            cm.createCache(Tag.class.getName(), jcacheConfiguration);
+            cm.createCache(life.xiaobao.domain.Tag.class.getName(), jcacheConfiguration);
             cm.createCache(life.xiaobao.domain.ArticleCategory.class.getName(), jcacheConfiguration);
             cm.createCache(life.xiaobao.domain.ArticleTag.class.getName(), jcacheConfiguration);
             // jhipster-needle-ehcache-add-entry
