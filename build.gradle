@@ -1,6 +1,9 @@
 import org.gradle.internal.os.OperatingSystem
 
 buildscript {
+    ext {
+        springBootVersion = '1.5.10.RELEASE'
+    }
     repositories {
         maven { url "http://maven.aliyun.com/nexus/content/groups/public/" }
         mavenLocal()
@@ -198,6 +201,7 @@ dependencies {
     compile group: 'nz.net.ultraq.thymeleaf', name: 'thymeleaf-layout-dialect', version: '2.2.2'
     //http://www.baeldung.com/dates-in-thymeleaf
     compile "org.thymeleaf.extras:thymeleaf-extras-java8time:3.0.0.RELEASE"
+    compile 'org.thymeleaf.extras:thymeleaf-extras-springsecurity4:2+'
 
     compileOnly "org.projectlombok:lombok:1.16.16"
     provided "org.projectlombok:lombok:1.16.16"

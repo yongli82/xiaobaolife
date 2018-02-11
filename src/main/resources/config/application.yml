@@ -50,7 +50,8 @@ spring:
         favicon:
             enabled: false
     thymeleaf:
-        mode: XHTML
+        cache: false
+        mode: LEGACYHTML5
 security:
     basic:
         enabled: false

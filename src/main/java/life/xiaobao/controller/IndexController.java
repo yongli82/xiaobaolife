@@ -31,7 +31,7 @@ public class IndexController {
         model.addAttribute("articles", page.getContent());
         model.addAttribute("pageNo", page.getNumber());
         model.addAttribute("totalPage", page.getTotalPages());
-        return "articles";
+        return "home/home";
     }
 
     @RequestMapping(value = "/admin")

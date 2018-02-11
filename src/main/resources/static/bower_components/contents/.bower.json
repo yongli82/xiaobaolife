@@ -1,0 +1,32 @@
+{
+  "main": "dist/browser/contents.js",
+  "license": "BSD-3-Clause",
+  "dependencies": {
+    "jquery": ">=1"
+  },
+  "name": "contents",
+  "description": "Table of contents generator.",
+  "keywords": [
+    "table of contents",
+    "toc",
+    "contents"
+  ],
+  "authors": [
+    {
+      "name": "Gajus Kuizinas",
+      "email": "gk@anuary.com",
+      "url": "http://gajus.com"
+    }
+  ],
+  "homepage": "https://github.com/gajus/contents",
+  "version": "4.0.2",
+  "_release": "4.0.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "4.0.2",
+    "commit": "4fbf2b44c7b74e041aa64fe380a7b2e1790370c7"
+  },
+  "_source": "https://github.com/gajus/contents.git",
+  "_target": "4.0.2",
+  "_originalSource": "contents"
+}

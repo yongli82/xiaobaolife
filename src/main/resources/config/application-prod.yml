@@ -19,6 +19,9 @@ spring:
             enabled: true
         livereload:
             enabled: true
+    thymeleaf:
+        cache: false
+        mode: LEGACYHTML5
     datasource:
         type: com.zaxxer.hikari.HikariDataSource
         url: jdbc:mysql://203.76.208.13:3306/xiaobaolife?useUnicode=true&characterEncoding=utf8&useSSL=false
@@ -45,8 +48,6 @@ spring:
         port: 25
         username:
         password:
-    thymeleaf:
-        cache: false
 
 liquibase:
     contexts: prod
